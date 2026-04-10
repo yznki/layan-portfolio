@@ -1,9 +1,9 @@
 ---
-title: About Layan
-intro: Marketing student, graphic designer, and content creator based in Amman, Jordan.
+title: Hi! I'm Layan
+intro: Marketing student and graphic designer from Amman, Jordan.
 portrait: /images/uploads/about-portrait.jpg
 ctaLabel: Let's work together
-ctaUrl: mailto:hello@layanaltaher.com
+ctaUrl: mailto:Layan04ibrahim@gmail.com
 bioParagraphs:
   - I'm Layan — a marketing student at the University of Jordan with a deep passion for turning ideas into bold visual identities. Design, to me, is the art of making ideas impossible to ignore.
   - Over the past few years I've worked across graphic design, brand identity, and content creation — helping organisations like KPMG Jordan and TEDxJU communicate with purpose and visual precision.
@@ -24,10 +24,10 @@ timeline:
 tools:
   - Illustrator
   - Photoshop
-  - Premiere Pro
+  - Premiere
   - After Effects
+  - Canva
+  - Figma
 ---
 
-I’m a designer focused on building visuals that feel bold, intentional, and memorable.
-
-My work sits at the intersection of **brand identity**, **content creation**, and **social storytelling** — with a strong focus on clarity, emotion, and visual consistency.
+Marketing student and graphic designer from Amman, Jordan.

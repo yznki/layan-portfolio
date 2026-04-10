@@ -11,7 +11,7 @@
     "heroEyebrow": "Graphic Designer & Content Creator",
     "heroTitleLine1": "Layan",
     "heroTitleLine2": "Altaher",
-    "heroTagline": "Brand identity, social media design, and content creation from Amman, Jordan.",
+    "heroTagline": "Turning brands into experiences — through design, storytelling, and visual identity.",
     "scrollLabel": "SCROLL",
     "aboutEyebrow": "— About Me",
     "aboutTitle": "GET TO KNOW ME",
@@ -19,36 +19,36 @@
     "aboutCtaLabel": "More about me →",
     "aboutCtaUrl": "/about",
     "aboutImage": "/images/uploads/about-portrait.jpg",
-    "servicesHeading": "Services",
+    "servicesHeading": "WHAT I DO",
     "services": [
+      "Graphic Design",
       "Brand Identity",
-      "Social Media Design",
       "Content Creation",
-      "Motion Design"
+      "Social Media"
     ]
   },
   "footer": {
     "ctaText": "LET'S WORK TOGETHER",
-    "email": "hello@layanaltaher.com",
+    "email": "Layan04ibrahim@gmail.com",
     "copyright": "© Layan Altaher",
     "socialLinks": [
       {
         "label": "Instagram",
-        "href": "https://instagram.com/"
+        "href": "#"
       },
       {
         "label": "LinkedIn",
-        "href": "https://linkedin.com/"
+        "href": "#"
       },
       {
         "label": "Behance",
-        "href": "https://behance.net/"
+        "href": "#"
       }
     ]
   },
   "contact": {
-    "email": "hello@layanaltaher.com",
+    "email": "Layan04ibrahim@gmail.com",
     "location": "Amman, Jordan",
-    "cvUrl": "/cv/layan-altaher-cv.pdf"
+    "cvUrl": "/cv.pdf"
   }
 }
