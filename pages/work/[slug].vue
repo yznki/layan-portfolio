@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
 
-definePageMeta({
-  key: route => route.fullPath,
-})
-
 const route = useRoute()
 const slug = computed(() => {
   const value = route.params.slug
