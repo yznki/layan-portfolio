@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-github-org/your-repo
+  repo: yznki/layan-portfolio
   branch: master
   base_url: https://your-oauth-proxy.example.com
   auth_endpoint: auth
@@ -24,8 +24,8 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Slug, name: slug, widget: string, hint: "Used in the URL. Example: tedxju-2025" }
+      - {label: Title, name: title, widget: string}
+      - {label: Slug, name: slug, widget: string, hint: "Used in the URL. Example: tedxju-2025"}
       - label: Category
         name: category
         widget: select
@@ -34,52 +34,52 @@ collections:
           - Social Media Design
           - Content Creation
           - Motion & Content
-      - { label: Year, name: year, widget: number, value_type: int, min: 2020, max: 2100 }
-      - { label: Client, name: client, widget: string }
-      - { label: Role, name: role, widget: string }
+      - {label: Year, name: year, widget: number, value_type: int, min: 2020, max: 2100}
+      - {label: Client, name: client, widget: string}
+      - {label: Role, name: role, widget: string}
       - label: Tools
         name: tools
         widget: list
-        field: { label: Tool, name: tool, widget: string }
-      - { label: Hide from site, name: draft, widget: boolean, default: false, required: false }
+        field: {label: Tool, name: tool, widget: string}
+      - {label: Hide from site, name: draft, widget: boolean, default: false, required: false}
       - label: Palette
         name: palette
         widget: object
         fields:
-          - { label: Primary, name: primary, widget: color, default: "#0F1B4C", allowInput: true }
-          - { label: Secondary, name: secondary, widget: color, default: "#FFF5F0", allowInput: true }
-          - { label: Accent, name: accent, widget: color, default: "#F5A0C0", allowInput: true }
-          - { label: Background, name: bg, widget: color, default: "#0F1B4C", allowInput: true }
-          - { label: Text, name: text, widget: color, default: "#FFFFFF", allowInput: true, required: false }
-          - { label: Muted text CSS value, name: textMuted, widget: string, required: false }
-      - { label: Cover image, name: cover, widget: image, choose_url: false }
-      - { label: Hero image, name: heroImage, widget: image, choose_url: false }
+          - {label: Primary, name: primary, widget: color, default: "#0F1B4C", allowInput: true}
+          - {label: Secondary, name: secondary, widget: color, default: "#FFF5F0", allowInput: true}
+          - {label: Accent, name: accent, widget: color, default: "#F5A0C0", allowInput: true}
+          - {label: Background, name: bg, widget: color, default: "#0F1B4C", allowInput: true}
+          - {label: Text, name: text, widget: color, default: "#FFFFFF", allowInput: true, required: false}
+          - {label: Muted text CSS value, name: textMuted, widget: string, required: false}
+      - {label: Cover image, name: cover, widget: image, choose_url: false}
+      - {label: Hero image, name: heroImage, widget: image, choose_url: false}
       - label: Gallery layout
         name: galleryLayout
         widget: select
         options:
-          - { label: 2 x 2 grid, value: grid-2x2 }
-          - { label: Horizontal scroll, value: horizontal-scroll }
-          - { label: Before / after, value: before-after }
-          - { label: Large first image, value: large-first }
+          - {label: 2 x 2 grid, value: grid-2x2}
+          - {label: Horizontal scroll, value: horizontal-scroll}
+          - {label: Before / after, value: before-after}
+          - {label: Large first image, value: large-first}
       - label: Gallery
         name: gallery
         widget: list
         summary: "{{fields.alt}}"
         fields:
-          - { label: Image, name: src, widget: image, choose_url: false }
-          - { label: Alt text, name: alt, widget: string }
-          - { label: Caption, name: caption, widget: string, required: false }
-          - { label: Width, name: width, widget: number, value_type: int, required: false }
-          - { label: Height, name: height, widget: number, value_type: int, required: false }
+          - {label: Image, name: src, widget: image, choose_url: false}
+          - {label: Alt text, name: alt, widget: string}
+          - {label: Caption, name: caption, widget: string, required: false}
+          - {label: Width, name: width, widget: number, value_type: int, required: false}
+          - {label: Height, name: height, widget: number, value_type: int, required: false}
       - label: Stats
         name: stats
         widget: list
         required: false
         fields:
-          - { label: Label, name: label, widget: string }
-          - { label: Value, name: value, widget: number, value_type: int }
-          - { label: Suffix, name: suffix, widget: string, required: false }
+          - {label: Label, name: label, widget: string}
+          - {label: Value, name: value, widget: number, value_type: int}
+          - {label: Suffix, name: suffix, widget: string, required: false}
       - label: Sections
         name: sections
         widget: select
@@ -116,11 +116,11 @@ collections:
             widget: list
             summary: "{{fields.title}}"
             fields:
-              - { label: Title, name: title, widget: string }
-              - { label: Thumbnail, name: thumbnail, widget: image, choose_url: false }
-              - { label: Thumbnail alt text, name: thumbnailAlt, widget: string, required: false }
-              - { label: Video URL, name: url, widget: string, required: false }
-              - { label: Duration, name: duration, widget: string }
-              - { label: Description, name: description, widget: text }
-              - { label: Display order, name: featuredOrder, widget: number, value_type: int, required: false }
-              - { label: Hide from site, name: draft, widget: boolean, required: false, default: false }
+              - {label: Title, name: title, widget: string}
+              - {label: Thumbnail, name: thumbnail, widget: image, choose_url: false}
+              - {label: Thumbnail alt text, name: thumbnailAlt, widget: string, required: false}
+              - {label: Video URL, name: url, widget: string, required: false}
+              - {label: Duration, name: duration, widget: string}
+              - {label: Description, name: description, widget: text}
+              - {label: Display order, name: featuredOrder, widget: number, value_type: int, required: false}
+              - {label: Hide from site, name: draft, widget: boolean, required: false, default: false}
