@@ -9,7 +9,7 @@
 **Client:** Layan Altaher — Graphic Designer & Content Creator, Amman, Jordan
 **Goal:** Awwwards nominee-worthy portfolio. Immersive, case-study-driven, buttery smooth.
 **Stack:** Nuxt 4 · Tailwind CSS v4 · GSAP (ScrollTrigger + SplitText) · Lenis · Nuxt Content v3 · Nuxt Image
-**Deployment:** Vercel SSG (`nuxt generate`) — handled manually by the developer, not the agent.
+**Deployment:** Vercel SSG (`nuxt generate`) with Decap CMS editing content through GitHub commits.
 **Repo:** Managed via GitHub MCP. Commit after completing every major task within a phase.
 
 ---
@@ -78,7 +78,7 @@ This means the KPMG page and TEDxJU page can have completely different visual st
 See `docs/content-schema.md` for the full frontmatter spec. Every case study `.md` file must conform to this schema.
 
 ### SSG + Nuxt Content
-`nuxt generate` pre-renders all routes including `/work/[slug]` via `queryContent()`. No runtime API calls to external services.
+`nuxt generate` pre-renders all routes including `/work/[slug]` via local content files. Decap CMS edits those files through GitHub.
 
 ---
 
@@ -184,8 +184,8 @@ The following MCPs must be active in your Codex session:
 
 > **Update this line when starting a new phase.**
 
-**Active:** Complete — All 4 phases done. Ready for deployment.
-**File:** `docs/phase-4.md` (all tasks marked complete)
+**Active:** Phase 5 — CMS & Editor Workflow
+**File:** `docs/phase-5.md`
 
 ---
 

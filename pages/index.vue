@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { data: projects } = await usePortfolioProjects()
+
 useHead({
   title: 'Layan Altaher — Graphic Designer & Content Creator',
   meta: [
@@ -31,7 +33,7 @@ const navVisible = inject<Ref<boolean>>('navVisible', ref(false))
     </div>
 
     <!-- 3. Selected work grid -->
-    <HomeWorkGrid />
+    <HomeWorkGrid :projects="projects ?? []" />
 
     <!-- 4. About teaser -->
     <HomeAboutTeaser />

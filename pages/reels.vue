@@ -9,13 +9,14 @@ useHead({
 interface Reel {
   title: string
   thumbnail: string
+  thumbnailAlt?: string
   url: string
   duration: string
   description: string
 }
 
-import reelsData from '~/public/reels.json'
-const reels = ref<Reel[]>(reelsData)
+const { data: reelsData } = await usePortfolioReels()
+const reels = computed<Reel[]>(() => reelsData.value ?? [])
 
 // Lightbox state
 const activeReel = ref<Reel | null>(null)
@@ -104,10 +105,15 @@ const onCardLeave = () => { if (cursorState) cursorState.value = 'default' }
           @mouseenter="onCardEnter"
           @mouseleave="onCardLeave"
         >
-          <!-- Thumbnail placeholder -->
-          <!-- TODO: replace with NuxtImg once real thumbnails arrive -->
           <div class="reel-thumb">
-            <div class="reel-thumb-placeholder">
+            <img
+              v-if="reel.thumbnail && !reel.thumbnail.includes('placeholder-')"
+              :src="reel.thumbnail"
+              :alt="reel.thumbnailAlt || `${reel.title} thumbnail`"
+              class="reel-thumb-image"
+              loading="lazy"
+            >
+            <div v-else class="reel-thumb-placeholder">
               <span class="reel-thumb-title">{{ reel.title }}</span>
             </div>
 
@@ -253,7 +259,16 @@ const onCardLeave = () => { if (cursorState) cursorState.value = 'default' }
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.reel-card:hover .reel-thumb-placeholder {
+.reel-thumb-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reel-card:hover .reel-thumb-placeholder,
+.reel-card:hover .reel-thumb-image {
   transform: scale(1.04);
 }
 

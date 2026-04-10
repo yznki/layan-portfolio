@@ -10,7 +10,8 @@ const props = defineProps<{
   title: string
   category: string
   palette: Palette
-  coverImage: string
+  coverImage?: string
+  coverAlt?: string
   index: number
 }>()
 
@@ -71,8 +72,14 @@ const onMouseLeave = () => {
         class="card-image-wrap"
         :style="{ background: palette.bg }"
       >
-        <!-- TODO: replace with real cover image -->
-        <div class="card-placeholder">
+        <img
+          v-if="coverImage && !coverImage.includes('placeholder-')"
+          :src="coverImage"
+          :alt="coverAlt || `${title} cover image`"
+          class="card-image"
+          loading="lazy"
+        >
+        <div v-else class="card-placeholder">
           <span class="placeholder-title">{{ title }}</span>
         </div>
 
@@ -111,6 +118,17 @@ const onMouseLeave = () => {
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.work-card:hover .card-image {
+  transform: scale(1.04);
 }
 
 @media (max-width: 1023px) {

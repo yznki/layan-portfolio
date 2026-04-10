@@ -107,13 +107,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // Nuxt Content v3
-  content: {
-    highlight: {
-      theme: 'github-dark',
-    },
-  },
-
   // Nuxt Image
   image: {
     quality: 85,

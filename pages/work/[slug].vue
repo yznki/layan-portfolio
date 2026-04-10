@@ -2,23 +2,18 @@
 import type { CSSProperties } from 'vue'
 
 const route = useRoute()
-const slug = computed(() => {
+const slug = computed<string>(() => {
   const value = route.params.slug
-  return Array.isArray(value) ? value[0] : String(value)
+  if (Array.isArray(value)) return value[0] ?? ''
+  return value ? String(value) : ''
 })
 
-const workKey = computed(() => `work:${slug.value}`)
+const { data } = await usePortfolioProject(slug)
 
-// Nuxt Content v3: queryCollection by path.
-// Keep the key reactive so navigating between /work/* routes refreshes this page instance.
-const { data } = await useAsyncData(workKey, async () => {
-  const project = await queryCollection('work').path(`/work/${slug.value}`).first()
-
-  if (!project) {
+watchEffect(() => {
+  if (data.value === null) {
     throw createError({ statusCode: 404, message: `Project "${slug.value}" not found` })
   }
-
-  return project
 })
 
 const caseStudyStyle = computed<CSSProperties>(() => {

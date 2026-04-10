@@ -2,11 +2,7 @@
 const props = defineProps<{ slug: string }>()
 
 const nextSlug = computed(() => props.slug)
-const nextKey = computed(() => `next:${nextSlug.value}`)
-
-const { data: next } = await useAsyncData(nextKey, () =>
-  queryCollection('work').path(`/work/${nextSlug.value}`).first(),
-)
+const { data: next } = await usePortfolioProject(nextSlug)
 
 const wrapRef    = ref<HTMLElement | null>(null)
 const imageRef   = ref<HTMLDivElement | null>(null)
@@ -55,11 +51,14 @@ const onLeave = () => {
             class="next-image"
             :style="{
               clipPath: 'inset(0 100% 0 0)',
-              background: `linear-gradient(135deg, ${next.palette.bg}, ${next.palette.primary}66)`,
+              background: next.coverImage && !next.coverImage.includes('placeholder-')
+                ? `center / cover no-repeat url(${next.coverImage})`
+                : `linear-gradient(135deg, ${next.palette.bg}, ${next.palette.primary}66)`,
             }"
           >
-            <!-- TODO: replace with real next-project cover image -->
-            <span class="next-image-placeholder">{{ next.title }}</span>
+            <span v-if="!next.coverImage || next.coverImage.includes('placeholder-')" class="next-image-placeholder">
+              {{ next.title }}
+            </span>
           </div>
         </div>
 

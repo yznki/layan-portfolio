@@ -16,6 +16,14 @@ const statSchema = z.object({
   suffix: z.string().optional().default(''),
 })
 
+const galleryImageSchema = z.object({
+  src: z.string(),
+  alt: z.string(),
+  caption: z.string().optional(),
+  width: z.number().optional(),
+  height: z.number().optional(),
+})
+
 export default defineContentConfig({
   collections: {
     work: defineCollection({
@@ -32,8 +40,10 @@ export default defineContentConfig({
         palette: paletteSchema,
         cover: z.string(),
         heroImage: z.string(),
+        gallery: z.array(galleryImageSchema).optional().default([]),
         stats: z.array(statSchema).optional(),
         galleryLayout: z.enum(['grid-2x2', 'horizontal-scroll', 'before-after', 'large-first']).optional().default('grid-2x2'),
+        draft: z.boolean().optional().default(false),
         sections: z.array(z.enum(['overview', 'gallery', 'process', 'results', 'next'])),
         nextProject: z.string(),
       }),

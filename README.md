@@ -14,7 +14,7 @@ Awwwards nominee-worthy portfolio for Layan Altaher, Graphic Designer & Content 
 | Styling | Tailwind CSS v4 (CSS-first config) |
 | Animations | GSAP 3.12 (ScrollTrigger + SplitText) |
 | Smooth scroll | Lenis |
-| Content | Nuxt Content v3 (Markdown + frontmatter) |
+| Content | Nuxt Content v3 + Decap CMS |
 | Images | Nuxt Image (WebP + lazy loading) |
 | Icons | Nuxt Icon (Iconify / mdi collection) |
 | Deployment | Vercel (static output) |
@@ -76,32 +76,39 @@ layan-portfolio/
 
 ---
 
-## Adding a New Case Study
+## Content Workflow
 
-See [`docs/how-to-add-case-study.md`](docs/how-to-add-case-study.md) for the step-by-step guide.
+The intended editor workflow is now:
 
-Short version:
-1. Add a new Markdown file to `content/work/your-slug.md` following the schema in `docs/content-schema.md`
-2. Add the route to `nitro.prerender.routes` in `nuxt.config.ts`
-3. Add placeholder images to `assets/images/your-slug/`
-4. Run `pnpm dev` to preview
+1. Layan opens `/admin`
+2. Decap CMS opens a GitHub login
+3. She edits projects and reels through forms
+4. Decap commits the changed content files to GitHub
+5. Vercel rebuilds the site automatically
+
+Setup details: [`docs/cms-setup.md`](docs/cms-setup.md)
 
 ---
 
 ## Adding Reels
 
-Edit `public/reels.json` — no code changes needed:
+The CMS edits `public/reels.json`. Manual format:
 
 ```json
-[
-  {
-    "title": "Brand Identity Reel",
-    "thumbnail": "/images/reels/brand-reel.jpg",
-    "url": "https://www.youtube.com/embed/VIDEO_ID",
-    "duration": "1:30",
-    "description": "Brand identity work for various clients."
-  }
-]
+{
+  "reels": [
+    {
+      "title": "Brand Identity Reel",
+      "thumbnail": "/images/reels/brand-reel.jpg",
+      "thumbnailAlt": "Brand Identity Reel thumbnail",
+      "url": "https://www.youtube.com/embed/VIDEO_ID",
+      "duration": "1:30",
+      "description": "Brand identity work for various clients.",
+      "featuredOrder": 10,
+      "draft": false
+    }
+  ]
+}
 ```
 
 Supported embed URLs: YouTube (`/embed/ID`), Vimeo (`/video/ID`), direct MP4.
@@ -160,7 +167,7 @@ Useful docs:
 
 ## Deployment
 
-The site deploys as a static site to Vercel.
+The site deploys as a static site to Vercel. Content changes come from GitHub commits created by Decap CMS.
 
 ```bash
 # Generate static output
@@ -169,7 +176,5 @@ pnpm generate
 # Deploy (Vercel handles this automatically on push to main)
 vercel --prod
 ```
-
-Environment variables: none required for the static build.
 
 `public/_headers` configures cache headers (1-year immutable for assets, no-cache for HTML).

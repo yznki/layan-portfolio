@@ -68,8 +68,14 @@ const metaItems = computed(() => [
   <section class="work-hero" aria-label="Project hero">
     <!-- Hero image / placeholder -->
     <div class="hero-image-wrap">
-      <!-- TODO: replace with real hero image from Layan -->
+      <img
+        v-if="data.heroImage && !data.heroImage.includes('placeholder-')"
+        :src="data.heroImage"
+        :alt="data.heroAlt || `${data.title} hero image`"
+        class="hero-image"
+      >
       <div
+        v-else
         class="hero-placeholder"
         :style="{ background: `linear-gradient(160deg, ${data.palette.bg}, ${data.palette.primary}33)` }"
       />
@@ -122,6 +128,12 @@ const metaItems = computed(() => [
   width: 100%;
   height: 100%;
   /* TODO: replace with <ParallaxImage> once real asset is available */
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Title overlaps the bottom edge of the image */

@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import type { PortfolioProject } from '~/types/portfolio'
+
+const props = defineProps<{
+  projects: PortfolioProject[]
+}>()
+
 const ruleRef = ref<HTMLDivElement | null>(null)
 
 // Animate horizontal rule on scroll
@@ -22,30 +28,13 @@ onMounted(() => {
   )
 })
 
-// Projects data — driven by content in Phase 3; hard-coded here for Phase 2
-const projects = [
-  {
-    slug: 'tedxju-2025',
-    title: 'TEDxJU 2025',
-    category: 'Brand Identity',
-    palette: { primary: '#EB0028', accent: '#EB0028', bg: '#0A0A0A' },
-    coverImage: '/images/tedxju/placeholder-cover.jpg',
-  },
-  {
-    slug: 'kpmg',
-    title: 'KPMG',
-    category: 'Social Media Design',
-    palette: { primary: '#00338D', accent: '#483698', bg: '#E8EAF0' },
-    coverImage: '/images/kpmg/placeholder-cover.jpg',
-  },
-  {
-    slug: 'kalmntina',
-    title: 'Kalmntina',
-    category: 'Content Creation',
-    palette: { primary: '#E8731A', accent: '#E8731A', bg: '#FFF3E0' },
-    coverImage: '/images/kalmntina/placeholder-cover.jpg',
-  },
-]
+const firstColumnProjects = computed(() =>
+  props.projects.filter((_, index) => index % 2 === 0),
+)
+
+const secondColumnProjects = computed(() =>
+  props.projects.filter((_, index) => index % 2 === 1),
+)
 </script>
 
 <template>
@@ -63,7 +52,7 @@ const projects = [
         <!-- Column 1: TEDxJU, Kalmntina -->
         <div class="work-col work-col-1">
           <HomeWorkCard
-            v-for="(p, i) in [projects[0], projects[2]]"
+            v-for="(p, i) in firstColumnProjects"
             :key="p.slug"
             v-bind="p"
             :index="i"
@@ -73,9 +62,10 @@ const projects = [
         <!-- Column 2: KPMG — offset downward -->
         <div class="work-col work-col-2">
           <HomeWorkCard
-            :key="projects[1].slug"
-            v-bind="projects[1]"
-            :index="1"
+            v-for="(p, i) in secondColumnProjects"
+            :key="p.slug"
+            v-bind="p"
+            :index="i + firstColumnProjects.length"
           />
         </div>
       </div>

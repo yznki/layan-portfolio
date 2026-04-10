@@ -36,8 +36,14 @@ const facts = computed(() => [
       <div ref="leftRef" class="overview-left" style="opacity: 0">
         <h2 id="overview-heading" class="overview-heading">Overview</h2>
         <div class="overview-accent-line" />
-        <!-- Renders the markdown body -->
-        <div class="overview-body">
+        <div v-if="data.overview || data.challenge" class="overview-body">
+          <p v-if="data.overview">{{ data.overview }}</p>
+          <template v-if="data.challenge">
+            <h2>The Challenge</h2>
+            <p>{{ data.challenge }}</p>
+          </template>
+        </div>
+        <div v-else class="overview-body">
           <ContentRenderer :value="data" />
         </div>
       </div>

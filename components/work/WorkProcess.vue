@@ -53,7 +53,13 @@ onMounted(() => {
   <section ref="sectionRef" class="work-process" aria-labelledby="process-heading">
     <div class="process-inner">
       <h2 id="process-heading" class="process-heading">The Process</h2>
-      <div class="process-body">
+      <div v-if="data.process?.length" class="process-body">
+        <template v-for="(section, index) in data.process" :key="`${section.heading || 'section'}-${index}`">
+          <h2 v-if="section.heading">{{ section.heading }}</h2>
+          <p>{{ section.body }}</p>
+        </template>
+      </div>
+      <div v-else class="process-body">
         <ContentRenderer :value="data" />
       </div>
     </div>

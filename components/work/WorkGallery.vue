@@ -2,12 +2,17 @@
 const props = defineProps<{ data: Record<string, any> }>()
 
 const layout = computed(() => props.data.galleryLayout ?? 'grid-2x2')
-
-// Placeholder images — 4 items for all layouts
-const images = computed(() =>
-  (props.data.images as string[] | undefined) ??
-  Array.from({ length: 4 }, (_, i) => `placeholder-${i + 1}`)
-)
+const galleryItems = computed(() => props.data.gallery ?? [])
+const images = computed(() => {
+  if (galleryItems.value.length) return galleryItems.value
+  return Array.from({ length: 4 }, (_, i) => ({
+    src: `placeholder-${i + 1}`,
+    alt: `Placeholder image ${i + 1}`,
+  }))
+})
+const galleryRotation = (index: number) => `${(index % 2 === 0 ? 1 : -1) * (1 + (index % 3))}deg`
+const horizontalRotation = (index: number) => `${index % 2 === 0 ? 1.5 : -1.5}deg`
+const displayNumber = (index: number) => index + 1
 
 // Before-after drag state
 const dividerX = ref(50)   // percent
@@ -20,7 +25,7 @@ const stopDrag  = () => { dragging.value = false }
 const onDrag = (e: MouseEvent | TouchEvent) => {
   if (!dragging.value || !containerRef.value) return
   const rect = containerRef.value.getBoundingClientRect()
-  const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+  const clientX = 'touches' in e ? (e.touches[0]?.clientX ?? rect.left) : e.clientX
   dividerX.value = Math.max(5, Math.min(95, ((clientX - rect.left) / rect.width) * 100))
 }
 
@@ -82,11 +87,17 @@ onMounted(() => {
           v-for="(img, i) in images.slice(0, 4)"
           :key="i"
           class="gallery-grid-card"
-          :style="{ '--r': `${(i % 2 === 0 ? 1 : -1) * (1 + (i % 3))}deg` }"
+          :style="{ '--r': galleryRotation(Number(i)) }"
         >
-          <!-- TODO: replace with <NuxtImg :src="img"> once real assets arrive -->
-          <div class="gallery-placeholder" :style="{ background: `var(--cs-primary)` }">
-            <span class="gallery-placeholder-label">Image {{ i + 1 }}</span>
+          <img
+            v-if="img.src && !img.src.includes('placeholder-')"
+            :src="img.src"
+            :alt="img.alt"
+            class="gallery-image"
+            loading="lazy"
+          >
+          <div v-else class="gallery-placeholder" :style="{ background: `var(--cs-primary)` }">
+            <span class="gallery-placeholder-label">Image {{ displayNumber(Number(i)) }}</span>
           </div>
         </div>
       </div>
@@ -99,10 +110,17 @@ onMounted(() => {
           v-for="(img, i) in images"
           :key="i"
           class="gallery-h-card"
-          :style="{ '--r': `${(i % 2 === 0 ? 1.5 : -1.5)}deg` }"
+          :style="{ '--r': horizontalRotation(Number(i)) }"
         >
-          <div class="gallery-placeholder tall" :style="{ background: `var(--cs-primary)` }">
-            <span class="gallery-placeholder-label">Image {{ i + 1 }}</span>
+          <img
+            v-if="img.src && !img.src.includes('placeholder-')"
+            :src="img.src"
+            :alt="img.alt"
+            class="gallery-image"
+            loading="lazy"
+          >
+          <div v-else class="gallery-placeholder tall" :style="{ background: `var(--cs-primary)` }">
+            <span class="gallery-placeholder-label">Image {{ displayNumber(Number(i)) }}</span>
           </div>
         </div>
       </div>
@@ -122,7 +140,14 @@ onMounted(() => {
           <!-- AFTER (full width, sits behind) -->
           <div class="ba-after">
             <span class="ba-label after-label">AFTER</span>
-            <div class="gallery-placeholder" :style="{ background: `var(--cs-accent)` }">
+            <img
+              v-if="images[1]?.src && !images[1].src.includes('placeholder-')"
+              :src="images[1].src"
+              :alt="images[1].alt"
+              class="gallery-image"
+              loading="lazy"
+            >
+            <div v-else class="gallery-placeholder" :style="{ background: `var(--cs-accent)` }">
               <span class="gallery-placeholder-label">After</span>
             </div>
           </div>
@@ -133,7 +158,14 @@ onMounted(() => {
             :style="{ clipPath: `inset(0 ${100 - dividerX}% 0 0)` }"
           >
             <span class="ba-label before-label">BEFORE</span>
-            <div class="gallery-placeholder" :style="{ background: `var(--cs-primary)` }">
+            <img
+              v-if="images[0]?.src && !images[0].src.includes('placeholder-')"
+              :src="images[0].src"
+              :alt="images[0].alt"
+              class="gallery-image"
+              loading="lazy"
+            >
+            <div v-else class="gallery-placeholder" :style="{ background: `var(--cs-primary)` }">
               <span class="gallery-placeholder-label">Before</span>
             </div>
           </div>
@@ -163,8 +195,15 @@ onMounted(() => {
           class="gallery-lf-card"
           :class="i === 0 ? 'large' : 'small'"
         >
-          <div class="gallery-placeholder" :style="{ background: `var(--cs-primary)` }">
-            <span class="gallery-placeholder-label">Image {{ i + 1 }}</span>
+          <img
+            v-if="img.src && !img.src.includes('placeholder-')"
+            :src="img.src"
+            :alt="img.alt"
+            class="gallery-image"
+            loading="lazy"
+          >
+          <div v-else class="gallery-placeholder" :style="{ background: `var(--cs-primary)` }">
+            <span class="gallery-placeholder-label">Image {{ displayNumber(Number(i)) }}</span>
           </div>
         </div>
       </div>
@@ -195,6 +234,13 @@ onMounted(() => {
 }
 
 .gallery-placeholder.tall { min-height: 460px; }
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 .gallery-placeholder-label {
   font-family: 'JetBrains Mono', monospace;
