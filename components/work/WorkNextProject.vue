@@ -1,8 +1,11 @@
 <script setup lang="ts">
 const props = defineProps<{ slug: string }>()
 
-const { data: next } = await useAsyncData(`next:${props.slug}`, () =>
-  queryCollection('work').path(`/work/${props.slug}`).first(),
+const nextSlug = computed(() => props.slug)
+const nextKey = computed(() => `next:${nextSlug.value}`)
+
+const { data: next } = await useAsyncData(nextKey, () =>
+  queryCollection('work').path(`/work/${nextSlug.value}`).first(),
 )
 
 const wrapRef    = ref<HTMLElement | null>(null)

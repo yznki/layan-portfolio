@@ -194,16 +194,18 @@ onMounted(() => {
 .hero-line {
   overflow: hidden;
   display: block;
+  margin-inline: -0.08em;
+  padding-inline: 0.08em;
 }
 
 .hero-line-inner {
   display: block;
   font-family: 'Clash Display', serif;
   font-weight: 700;
-  font-size: clamp(4.5rem, 9vw, 10rem);
+  font-size: clamp(4.5rem, 8.8vw, 9.75rem);
   color: var(--blush);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
 }
 
 .hero-tagline {
