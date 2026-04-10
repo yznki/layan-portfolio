@@ -1,10 +1,85 @@
-import type { PortfolioGalleryImage, PortfolioProcessSection, PortfolioProject, Reel } from '~/types/portfolio'
+import type {PortfolioGalleryImage, PortfolioProcessSection, PortfolioProject, Reel} from "~/types/portfolio"
+
+export interface PortfolioSiteSettings {
+  seo: {
+    siteTitle: string
+    siteDescription: string
+    aboutTitle: string
+    aboutDescription: string
+    reelsTitle: string
+    reelsDescription: string
+  }
+  home: {
+    heroEyebrow: string
+    heroTitleLine1: string
+    heroTitleLine2: string
+    heroTagline: string
+    scrollLabel: string
+    aboutEyebrow: string
+    aboutTitle: string
+    aboutBody: string
+    aboutCtaLabel: string
+    aboutCtaUrl: string
+    aboutImage: string
+    servicesHeading: string
+    services: string[]
+  }
+  footer: {
+    ctaText: string
+    email: string
+    copyright: string
+    socialLinks: Array<{label: string; href: string}>
+  }
+  contact: {
+    email: string
+    location: string
+    cvUrl: string
+  }
+}
+
+export interface PortfolioAboutPage {
+  title: string
+  intro: string
+  portrait: string
+  ctaLabel: string
+  ctaUrl: string
+  bioParagraphs: string[]
+  timeline: Array<{org: string; role: string; year: string; slug?: string}>
+  tools: string[]
+  body?: unknown
+}
+
+export const usePortfolioSiteSettings = async () => {
+  return useAsyncData("portfolio-site-settings", async () => {
+    const site = (await import("~/content/settings/site.json")).default as PortfolioSiteSettings
+    return site
+  })
+}
+
+export const usePortfolioAboutPage = async () => {
+  return useAsyncData("portfolio-about-page", async () => {
+    const doc = await queryCollection("pages").path("/about").first()
+    if (!doc) return null
+
+    return {
+      title: doc.title,
+      intro: doc.intro,
+      portrait: doc.portrait,
+      ctaLabel: doc.ctaLabel,
+      ctaUrl: doc.ctaUrl,
+      bioParagraphs: doc.bioParagraphs ?? [],
+      timeline: doc.timeline ?? [],
+      tools: doc.tools ?? [],
+      body: doc.body,
+    } as PortfolioAboutPage
+  })
+}
 
 const splitMarkdownSections = (body: unknown) => {
-  if (typeof body !== 'string') {
+  if (typeof body !== "string") {
     return {
-      overview: '',
-      challenge: '',
+      overview: "",
+      challenge: "",
       process: [] as PortfolioProcessSection[],
     }
   }
@@ -12,8 +87,8 @@ const splitMarkdownSections = (body: unknown) => {
   const trimmed = body.trim()
   if (!trimmed) {
     return {
-      overview: '',
-      challenge: '',
+      overview: "",
+      challenge: "",
       process: [] as PortfolioProcessSection[],
     }
   }
@@ -21,15 +96,15 @@ const splitMarkdownSections = (body: unknown) => {
   const parts = trimmed.split(/\n##\s+/)
   const [first, ...rest] = parts
   const result = {
-    overview: (first ?? '').replace(/^##\s+Overview\s*/i, '').trim(),
-    challenge: '',
+    overview: (first ?? "").replace(/^##\s+Overview\s*/i, "").trim(),
+    challenge: "",
     process: [] as PortfolioProcessSection[],
   }
 
   for (const rawPart of rest) {
-    const [rawHeading, ...bodyLines] = rawPart.split('\n')
-    const heading = (rawHeading ?? '').trim()
-    const sectionBody = bodyLines.join('\n').trim()
+    const [rawHeading, ...bodyLines] = rawPart.split("\n")
+    const heading = (rawHeading ?? "").trim()
+    const sectionBody = bodyLines.join("\n").trim()
     if (!sectionBody) continue
 
     if (/^challenge$/i.test(heading)) {
@@ -46,8 +121,7 @@ const splitMarkdownSections = (body: unknown) => {
   return result
 }
 
-const normalizeGallery = (gallery?: PortfolioGalleryImage[]) =>
-  (gallery ?? []).filter((item) => item?.src && item?.alt)
+const normalizeGallery = (gallery?: PortfolioGalleryImage[]) => (gallery ?? []).filter((item) => item?.src && item?.alt)
 
 const sortProjects = (projects: PortfolioProject[]) =>
   projects.sort((a, b) => {
@@ -74,23 +148,23 @@ const normalizeContentProject = (doc: any): PortfolioProject => {
       secondary: doc.palette.secondary,
       accent: doc.palette.accent,
       bg: doc.palette.bg,
-      text: doc.palette.text ?? '#FFFFFF',
-      textMuted: doc.palette.textMuted ?? 'rgba(255,255,255,0.55)',
+      text: doc.palette.text ?? "#FFFFFF",
+      textMuted: doc.palette.textMuted ?? "rgba(255,255,255,0.55)",
     },
     cover: doc.cover,
     coverImage: doc.cover,
     heroImage: doc.heroImage,
-    galleryLayout: doc.galleryLayout ?? 'grid-2x2',
+    galleryLayout: doc.galleryLayout ?? "grid-2x2",
     gallery: normalizeGallery(doc.gallery),
     stats: doc.stats ?? [],
-    sections: doc.sections ?? ['overview', 'gallery', 'process', 'results', 'next'],
+    sections: doc.sections ?? ["overview", "gallery", "process", "results", "next"],
     nextProject: doc.nextProject,
     overview: parsed.overview,
     challenge: parsed.challenge,
     process: parsed.process,
     path: doc.path,
     body: doc,
-    _source: 'content',
+    _source: "content",
   }
 }
 
@@ -103,35 +177,35 @@ const normalizeJsonReel = (reel: any): Reel => ({
   description: reel.description,
   featuredOrder: reel.featuredOrder,
   draft: reel.draft,
-  _source: 'json',
+  _source: "json",
 })
 
 export const usePortfolioProjects = async () => {
-  return useAsyncData('portfolio-projects', async () => {
-    const docs = await queryCollection('work').all()
-    return sortProjects(
-      docs
-        .map(normalizeContentProject)
-        .filter((project) => !project.draft),
-    )
+  return useAsyncData("portfolio-projects", async () => {
+    const docs = await queryCollection("work").all()
+    return sortProjects(docs.map(normalizeContentProject).filter((project) => !project.draft))
   })
 }
 
 export const usePortfolioProject = async (slug: MaybeRefOrGetter<string>) => {
   const slugValue = computed(() => toValue(slug))
 
-  return useAsyncData(() => `portfolio-project:${slugValue.value}`, async () => {
-    const doc = await queryCollection('work').path(`/work/${slugValue.value}`).first()
-    if (!doc) return null
-    return normalizeContentProject(doc)
-  }, {
-    watch: [slugValue],
-  })
+  return useAsyncData(
+    () => `portfolio-project:${slugValue.value}`,
+    async () => {
+      const doc = await queryCollection("work").path(`/work/${slugValue.value}`).first()
+      if (!doc) return null
+      return normalizeContentProject(doc)
+    },
+    {
+      watch: [slugValue],
+    },
+  )
 }
 
 export const usePortfolioReels = async () => {
-  return useAsyncData('portfolio-reels', async () => {
-    const reelsFile = (await import('~/public/reels.json')).default as { reels?: Reel[] }
+  return useAsyncData("portfolio-reels", async () => {
+    const reelsFile = (await import("~/public/reels.json")).default as {reels?: Reel[]}
     const jsonReels = reelsFile.reels ?? []
     return jsonReels
       .map(normalizeJsonReel)

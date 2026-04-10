@@ -1,10 +1,27 @@
 <script setup lang="ts">
   const props = defineProps<{preloaderDone: boolean}>()
 
+  const {data: site} = await usePortfolioSiteSettings()
+
+  const home = computed(() => site.value?.home)
+  const contact = computed(() => site.value?.contact)
+
   const headingRef = ref<HTMLElement | null>(null)
   const eyebrowRef = ref<HTMLElement | null>(null)
   const taglineRef = ref<HTMLElement | null>(null)
   const scrollRef = ref<HTMLElement | null>(null)
+
+  const heroEyebrow = computed(() => home.value?.heroEyebrow || "— Portfolio")
+  const heroTitleLine1 = computed(() => home.value?.heroTitleLine1 || "CREATIVE")
+  const heroTitleLine2 = computed(() => home.value?.heroTitleLine2 || "DESIGNER")
+  const heroTagline = computed(
+    () =>
+      home.value?.heroTagline || "Turning brands into experiences — through design, storytelling, and visual identity.",
+  )
+  const scrollLabel = computed(() => home.value?.scrollLabel || "SCROLL")
+  const heroImage = computed(() => home.value?.aboutImage || "")
+  const heroImageAlt = computed(() => `${heroTitleLine1.value} ${heroTitleLine2.value}`.trim() || "Hero portrait")
+  const locationLabel = computed(() => contact.value?.location || "Based in Amman, Jordan")
 
   async function playHeroEntrance() {
     const {gsap} = useGsap()
@@ -12,23 +29,18 @@
 
     const tl = gsap.timeline({delay: 0.1})
 
-    // Eyebrow fades up
     tl.fromTo(eyebrowRef.value, {opacity: 0, y: 16}, {opacity: 1, y: 0, duration: 0.6, ease: "power3.out"})
 
-    // Heading lines reveal from below
     const lines = headingRef.value?.querySelectorAll<HTMLElement>(".hero-line-inner")
     if (lines?.length) {
       tl.fromTo(lines, {yPercent: 110}, {yPercent: 0, duration: 1, stagger: 0.15, ease: "power4.out"}, "-=0.3")
     }
 
-    // Tagline fades up
     tl.fromTo(taglineRef.value, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.6, ease: "power3.out"}, "-=0.4")
 
-    // Scroll indicator
     tl.fromTo(scrollRef.value, {opacity: 0}, {opacity: 1, duration: 0.5, ease: "power2.out"}, "-=0.2")
   }
 
-  // Watch for first load (preloader finishes while this component is mounted)
   watch(
     () => props.preloaderDone,
     (done) => {
@@ -40,9 +52,7 @@
     const {gsap} = useGsap()
     if (!gsap) return
 
-    // If navigating back to home after preloader already played, animate immediately
     if (props.preloaderDone) {
-      // Reset elements first so animation replays cleanly
       gsap.set(eyebrowRef.value, {opacity: 0, y: 16})
       gsap.set(taglineRef.value, {opacity: 0, y: 20})
       gsap.set(scrollRef.value, {opacity: 0})
@@ -51,7 +61,6 @@
       playHeroEntrance()
     }
 
-    // Ken Burns on the image placeholder
     gsap.to(".hero-image-inner", {
       scale: 1.08,
       duration: 8,
@@ -65,40 +74,34 @@
 <template>
   <section class="hero grain" aria-label="Hero">
     <div class="hero-grid">
-      <!-- LEFT COLUMN ─ text -->
       <div class="hero-text">
-        <!-- Eyebrow -->
-        <p ref="eyebrowRef" class="hero-eyebrow" style="opacity: 0">— Portfolio</p>
+        <p ref="eyebrowRef" class="hero-eyebrow" style="opacity: 0">
+          {{ heroEyebrow }}
+        </p>
 
-        <!-- Heading -->
-        <h1 ref="headingRef" class="hero-heading" aria-label="Creative Designer">
+        <h1 ref="headingRef" class="hero-heading" :aria-label="`${heroTitleLine1} ${heroTitleLine2}`">
           <span class="hero-line">
-            <span class="hero-line-inner">CREATIVE</span>
+            <span class="hero-line-inner">{{ heroTitleLine1 }}</span>
           </span>
           <span class="hero-line">
-            <span class="hero-line-inner">DESIGNER</span>
+            <span class="hero-line-inner">{{ heroTitleLine2 }}</span>
           </span>
         </h1>
 
-        <!-- Tagline -->
         <p ref="taglineRef" class="hero-tagline" style="opacity: 0">
-          Turning brands into experiences — through design,<br class="hidden lg:block" />
-          storytelling, and visual identity.
+          {{ heroTagline }}
         </p>
 
-        <!-- Scroll indicator -->
         <div ref="scrollRef" class="scroll-indicator" style="opacity: 0" aria-hidden="true">
           <span class="scroll-line">
             <span class="scroll-line-highlight" />
           </span>
-          <span class="scroll-label">SCROLL</span>
+          <span class="scroll-label">{{ scrollLabel }}</span>
         </div>
       </div>
 
-      <!-- RIGHT COLUMN ─ image blob -->
       <div class="hero-image-col">
         <div class="hero-blob-wrap">
-          <!-- SVG clip-path definition -->
           <svg width="0" height="0" class="absolute">
             <defs>
               <clipPath id="blob-clip" clipPathUnits="objectBoundingBox">
@@ -108,16 +111,15 @@
           </svg>
 
           <div class="hero-blob">
-            <!-- TODO: replace with real portrait photo from Layan -->
-            <div class="hero-image-inner hero-placeholder">
+            <img v-if="heroImage" :src="heroImage" :alt="heroImageAlt" class="hero-image-inner hero-photo" />
+            <div v-else class="hero-image-inner hero-placeholder">
               <span class="placeholder-label">LAYAN</span>
             </div>
           </div>
 
-          <!-- Location pill -->
           <div class="location-pill">
             <span class="location-dot" aria-hidden="true">📍</span>
-            Based in Amman, Jordan
+            {{ locationLabel }}
           </div>
         </div>
       </div>
@@ -301,6 +303,11 @@
     width: 100%;
     height: 100%;
     will-change: transform;
+  }
+
+  .hero-photo {
+    object-fit: cover;
+    display: block;
   }
 
   .hero-placeholder {

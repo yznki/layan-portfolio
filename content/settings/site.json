@@ -1,0 +1,54 @@
+{
+  "seo": {
+    "siteTitle": "Layan Altaher — Graphic Designer & Content Creator",
+    "siteDescription": "Portfolio of Layan Altaher — graphic designer, brand identity, and content creator based in Amman, Jordan.",
+    "aboutTitle": "About — Layan Altaher",
+    "aboutDescription": "About Layan Altaher — graphic designer, brand identity, and content creator based in Amman, Jordan.",
+    "reelsTitle": "Reels — Layan Altaher",
+    "reelsDescription": "Motion and content reels by Layan Altaher — brand identity, social media, and design process videos."
+  },
+  "home": {
+    "heroEyebrow": "Graphic Designer & Content Creator",
+    "heroTitleLine1": "Layan",
+    "heroTitleLine2": "Altaher",
+    "heroTagline": "Brand identity, social media design, and content creation from Amman, Jordan.",
+    "scrollLabel": "SCROLL",
+    "aboutEyebrow": "— About Me",
+    "aboutTitle": "GET TO KNOW ME",
+    "aboutBody": "I'm Layan — a marketing student at the University of Jordan with a passion for turning ideas into bold visual identities. I work across graphic design, branding, and content creation.",
+    "aboutCtaLabel": "More about me →",
+    "aboutCtaUrl": "/about",
+    "aboutImage": "/images/uploads/about-portrait.jpg",
+    "servicesHeading": "Services",
+    "services": [
+      "Brand Identity",
+      "Social Media Design",
+      "Content Creation",
+      "Motion Design"
+    ]
+  },
+  "footer": {
+    "ctaText": "LET'S WORK TOGETHER",
+    "email": "hello@layanaltaher.com",
+    "copyright": "© Layan Altaher",
+    "socialLinks": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/"
+      },
+      {
+        "label": "Behance",
+        "href": "https://behance.net/"
+      }
+    ]
+  },
+  "contact": {
+    "email": "hello@layanaltaher.com",
+    "location": "Amman, Jordan",
+    "cvUrl": "/cv/layan-altaher-cv.pdf"
+  }
+}

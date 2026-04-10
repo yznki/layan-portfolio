@@ -11,6 +11,100 @@ site_url: https://layan-portfolio-five.vercel.app
 publish_mode: simple
 
 collections:
+  - name: site_settings
+    label: Site Settings
+    files:
+      - label: Global Site Content
+        name: site
+        file: content/settings/site.json
+        editor:
+          preview: false
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - {label: Site Title, name: siteTitle, widget: string}
+              - {label: Site Description, name: siteDescription, widget: text}
+              - {label: About Page Title, name: aboutTitle, widget: string}
+              - {label: About Page Description, name: aboutDescription, widget: text}
+              - {label: Reels Page Title, name: reelsTitle, widget: string}
+              - {label: Reels Page Description, name: reelsDescription, widget: text}
+
+          - label: Homepage
+            name: home
+            widget: object
+            fields:
+              - {label: Hero Eyebrow, name: heroEyebrow, widget: string}
+              - {label: Hero Title Line 1, name: heroTitleLine1, widget: string}
+              - {label: Hero Title Line 2, name: heroTitleLine2, widget: string}
+              - {label: Hero Tagline, name: heroTagline, widget: text}
+              - {label: Scroll Label, name: scrollLabel, widget: string}
+              - {label: About Eyebrow, name: aboutEyebrow, widget: string}
+              - {label: About Title, name: aboutTitle, widget: string}
+              - {label: About Body, name: aboutBody, widget: text}
+              - {label: About CTA Label, name: aboutCtaLabel, widget: string}
+              - {label: About CTA URL, name: aboutCtaUrl, widget: string}
+              - {label: About Image, name: aboutImage, widget: image, choose_url: false}
+              - {label: Services Heading, name: servicesHeading, widget: string}
+              - label: Services
+                name: services
+                widget: list
+                field: {label: Service, name: service, widget: string}
+
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - {label: Footer CTA Text, name: ctaText, widget: string}
+              - {label: Footer Email, name: email, widget: string}
+              - {label: Copyright Text, name: copyright, widget: string}
+              - label: Social Links
+                name: socialLinks
+                widget: list
+                fields:
+                  - {label: Label, name: label, widget: string}
+                  - {label: URL, name: href, widget: string}
+
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - {label: Contact Email, name: email, widget: string}
+              - {label: Location, name: location, widget: string, required: false}
+              - {label: CV URL, name: cvUrl, widget: string, required: false}
+
+  - name: pages
+    label: Pages
+    files:
+      - label: About Page
+        name: about_page
+        file: content/pages/about.md
+        editor:
+          preview: false
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: text}
+          - {label: Portrait, name: portrait, widget: image, choose_url: false}
+          - {label: CTA Label, name: ctaLabel, widget: string, required: false}
+          - {label: CTA URL, name: ctaUrl, widget: string, required: false}
+          - label: Bio Paragraphs
+            name: bioParagraphs
+            widget: list
+            field: {label: Paragraph, name: paragraph, widget: text}
+          - label: Timeline
+            name: timeline
+            widget: list
+            fields:
+              - {label: Organization, name: org, widget: string}
+              - {label: Role, name: role, widget: string}
+              - {label: Year, name: year, widget: string}
+              - {label: Project Slug, name: slug, widget: string, required: false}
+          - label: Tools
+            name: tools
+            widget: list
+            field: {label: Tool, name: tool, widget: string}
+          - {label: Body, name: body, widget: markdown, required: false}
   - name: work
     label: Projects
     label_singular: Project

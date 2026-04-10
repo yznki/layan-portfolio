@@ -1,19 +1,18 @@
-import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+import {defineCollection, defineContentConfig, z} from "@nuxt/content"
 
 const paletteSchema = z.object({
   primary: z.string(),
   secondary: z.string(),
   accent: z.string(),
   bg: z.string(),
-  // Readable text color for this project's background (white for dark bg, dark for light bg)
-  text: z.string().default('#FFFFFF'),
-  textMuted: z.string().default('rgba(255,255,255,0.55)'),
+  text: z.string().default("#FFFFFF"),
+  textMuted: z.string().default("rgba(255,255,255,0.55)"),
 })
 
 const statSchema = z.object({
   label: z.string(),
   value: z.number(),
-  suffix: z.string().optional().default(''),
+  suffix: z.string().optional().default(""),
 })
 
 const galleryImageSchema = z.object({
@@ -27,8 +26,8 @@ const galleryImageSchema = z.object({
 export default defineContentConfig({
   collections: {
     work: defineCollection({
-      type: 'page',
-      source: 'work/*.md',
+      type: "page",
+      source: "work/*.md",
       schema: z.object({
         title: z.string(),
         slug: z.string(),
@@ -42,10 +41,37 @@ export default defineContentConfig({
         heroImage: z.string(),
         gallery: z.array(galleryImageSchema).optional().default([]),
         stats: z.array(statSchema).optional(),
-        galleryLayout: z.enum(['grid-2x2', 'horizontal-scroll', 'before-after', 'large-first']).optional().default('grid-2x2'),
+        galleryLayout: z
+          .enum(["grid-2x2", "horizontal-scroll", "before-after", "large-first"])
+          .optional()
+          .default("grid-2x2"),
         draft: z.boolean().optional().default(false),
-        sections: z.array(z.enum(['overview', 'gallery', 'process', 'results', 'next'])),
+        sections: z.array(z.enum(["overview", "gallery", "process", "results", "next"])),
         nextProject: z.string(),
+      }),
+    }),
+
+    pages: defineCollection({
+      type: "page",
+      source: "pages/*.md",
+      schema: z.object({
+        title: z.string(),
+        intro: z.string(),
+        portrait: z.string(),
+        ctaLabel: z.string().optional().default(""),
+        ctaUrl: z.string().optional().default(""),
+        bioParagraphs: z.array(z.string()).default([]),
+        timeline: z
+          .array(
+            z.object({
+              org: z.string(),
+              role: z.string(),
+              year: z.string(),
+              slug: z.string().optional(),
+            }),
+          )
+          .default([]),
+        tools: z.array(z.string()).default([]),
       }),
     }),
   },
