@@ -1,79 +1,65 @@
 <script setup lang="ts">
-const props = defineProps<{ preloaderDone: boolean }>()
+  const props = defineProps<{preloaderDone: boolean}>()
 
-const headingRef = ref<HTMLElement | null>(null)
-const eyebrowRef = ref<HTMLElement | null>(null)
-const taglineRef = ref<HTMLElement | null>(null)
-const scrollRef = ref<HTMLElement | null>(null)
+  const headingRef = ref<HTMLElement | null>(null)
+  const eyebrowRef = ref<HTMLElement | null>(null)
+  const taglineRef = ref<HTMLElement | null>(null)
+  const scrollRef = ref<HTMLElement | null>(null)
 
-async function playHeroEntrance() {
-  const { gsap } = useGsap()
-  if (!gsap) return
+  async function playHeroEntrance() {
+    const {gsap} = useGsap()
+    if (!gsap) return
 
-  const tl = gsap.timeline({ delay: 0.1 })
+    const tl = gsap.timeline({delay: 0.1})
 
     // Eyebrow fades up
-    tl.fromTo(
-      eyebrowRef.value,
-      { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-    )
+    tl.fromTo(eyebrowRef.value, {opacity: 0, y: 16}, {opacity: 1, y: 0, duration: 0.6, ease: "power3.out"})
 
     // Heading lines reveal from below
-    const lines = headingRef.value?.querySelectorAll<HTMLElement>('.hero-line-inner')
+    const lines = headingRef.value?.querySelectorAll<HTMLElement>(".hero-line-inner")
     if (lines?.length) {
-      tl.fromTo(
-        lines,
-        { yPercent: 110 },
-        { yPercent: 0, duration: 1, stagger: 0.15, ease: 'power4.out' },
-        '-=0.3',
-      )
+      tl.fromTo(lines, {yPercent: 110}, {yPercent: 0, duration: 1, stagger: 0.15, ease: "power4.out"}, "-=0.3")
     }
 
     // Tagline fades up
-    tl.fromTo(
-      taglineRef.value,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-      '-=0.4',
-    )
+    tl.fromTo(taglineRef.value, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.6, ease: "power3.out"}, "-=0.4")
 
     // Scroll indicator
-    tl.fromTo(
-      scrollRef.value,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: 'power2.out' },
-      '-=0.2',
-    )
-}
-
-// Watch for first load (preloader finishes while this component is mounted)
-watch(() => props.preloaderDone, (done) => { if (done) playHeroEntrance() })
-
-onMounted(() => {
-  const { gsap } = useGsap()
-  if (!gsap) return
-
-  // If navigating back to home after preloader already played, animate immediately
-  if (props.preloaderDone) {
-    // Reset elements first so animation replays cleanly
-    gsap.set(eyebrowRef.value, { opacity: 0, y: 16 })
-    gsap.set(taglineRef.value, { opacity: 0, y: 20 })
-    gsap.set(scrollRef.value, { opacity: 0 })
-    const lines = headingRef.value?.querySelectorAll<HTMLElement>('.hero-line-inner')
-    if (lines?.length) gsap.set(lines, { yPercent: 110 })
-    playHeroEntrance()
+    tl.fromTo(scrollRef.value, {opacity: 0}, {opacity: 1, duration: 0.5, ease: "power2.out"}, "-=0.2")
   }
 
-  // Ken Burns on the image placeholder
-  gsap.to('.hero-image-inner', {
-    scale: 1.08,
-    duration: 8,
-    ease: 'none',
-    yoyo: true,
-    repeat: -1,
+  // Watch for first load (preloader finishes while this component is mounted)
+  watch(
+    () => props.preloaderDone,
+    (done) => {
+      if (done) playHeroEntrance()
+    },
+  )
+
+  onMounted(() => {
+    const {gsap} = useGsap()
+    if (!gsap) return
+
+    // If navigating back to home after preloader already played, animate immediately
+    if (props.preloaderDone) {
+      // Reset elements first so animation replays cleanly
+      gsap.set(eyebrowRef.value, {opacity: 0, y: 16})
+      gsap.set(taglineRef.value, {opacity: 0, y: 20})
+      gsap.set(scrollRef.value, {opacity: 0})
+      const lines = headingRef.value?.querySelectorAll<HTMLElement>(".hero-line-inner")
+      if (lines?.length) gsap.set(lines, {yPercent: 110})
+      playHeroEntrance()
+    }
+
+    // Ken Burns on the image placeholder
+    gsap.to(".hero-image-inner", {
+      scale: 1.08,
+      duration: 8,
+      ease: "none",
+      yoyo: true,
+      repeat: -1,
+    })
   })
-})
 </script>
 
 <template>
@@ -82,9 +68,7 @@ onMounted(() => {
       <!-- LEFT COLUMN ─ text -->
       <div class="hero-text">
         <!-- Eyebrow -->
-        <p ref="eyebrowRef" class="hero-eyebrow" style="opacity: 0">
-          — Portfolio 2025
-        </p>
+        <p ref="eyebrowRef" class="hero-eyebrow" style="opacity: 0">— Portfolio</p>
 
         <!-- Heading -->
         <h1 ref="headingRef" class="hero-heading" aria-label="Creative Designer">
@@ -142,209 +126,226 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.hero {
-  min-height: 100svh;
-  background: var(--navy);
-  display: flex;
-  align-items: center;
-  padding: 7rem 1.25rem 4rem;
-  overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  .hero { padding: 7rem 2.5rem 5rem; }
-}
-@media (min-width: 1024px) {
-  .hero { padding: 7rem 4rem 5rem; }
-}
-
-.hero-grid {
-  max-width: 1280px;
-  margin: 0 auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-@media (min-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 60% 40%;
-    gap: 2rem;
-  }
-}
-
-/* ─── Text column ── */
-.hero-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--blush);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: 1.75rem;
-}
-
-.hero-heading {
-  container-type: inline-size;
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 1.75rem;
-  width: min(100%, 46rem);
-}
-
-.hero-line {
-  overflow: hidden;
-  display: block;
-  margin-inline: -1.25rem;
-  padding-inline: 1.25rem;
-}
-
-.hero-line-inner {
-  display: block;
-  font-family: 'Clash Display', serif;
-  font-weight: 700;
-  font-size: clamp(3.75rem, 16cqw, 8rem);
-  color: var(--blush);
-  line-height: 0.92;
-  letter-spacing: 0;
-}
-
-@supports not (font-size: 1cqw) {
-  .hero-line-inner {
-    font-size: clamp(3.75rem, 7.6vw, 8.5rem);
-  }
-}
-
-.hero-tagline {
-  font-family: 'General Sans', sans-serif;
-  font-style: italic;
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
-  color: var(--cream);
-  opacity: 0.7;
-  line-height: 1.7;
-  margin-bottom: 3.5rem;
-  max-width: 520px;
-}
-
-/* ─── Scroll indicator ── */
-.scroll-indicator {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  position: absolute;
-  bottom: 2.5rem;
-  left: 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .scroll-indicator { left: 2.5rem; }
-}
-@media (min-width: 1024px) {
-  .scroll-indicator { left: 4rem; }
-}
-
-.scroll-line {
-  position: relative;
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: rgba(245, 160, 192, 0.3);
-  overflow: hidden;
-}
-
-.scroll-line-highlight {
-  position: absolute;
-  inset: 0;
-  background: var(--blush);
-  animation: scan 1.8s ease-in-out infinite;
-}
-
-@keyframes scan {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-
-.scroll-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--cream);
-  opacity: 0.5;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-/* ─── Image blob ── */
-.hero-image-col {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .hero-image-col {
+  .hero {
+    min-height: 100svh;
+    background: var(--navy);
     display: flex;
-    justify-content: center;
+    align-items: center;
+    padding: 7rem 1.25rem 4rem;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      padding: 7rem 2.5rem 5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero {
+      padding: 7rem 4rem 5rem;
+    }
+  }
+
+  .hero-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
     align-items: center;
   }
-}
 
-.hero-blob-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 460px;
-}
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 60% 40%;
+      gap: 2rem;
+    }
+  }
 
-.hero-blob {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  clip-path: url(#blob-clip);
-  overflow: hidden;
-  border-radius: 50%;
-}
+  /* ─── Text column ── */
+  .hero-eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--blush);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+  }
 
-.hero-image-inner {
-  width: 100%;
-  height: 100%;
-  will-change: transform;
-}
+  .hero-heading {
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1.75rem;
+    width: min(100%, 46rem);
+  }
 
-.hero-placeholder {
-  background: linear-gradient(135deg, var(--ink), rgba(245, 160, 192, 0.15));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid rgba(245, 160, 192, 0.2);
-}
+  .hero-line {
+    overflow: hidden;
+    display: block;
+    margin-inline: -1.25rem;
+    padding-inline: 1.25rem;
+  }
 
-.placeholder-label {
-  font-family: 'Clash Display', serif;
-  font-weight: 700;
-  font-size: 2rem;
-  color: var(--blush);
-  opacity: 0.3;
-  letter-spacing: 0.4em;
-}
+  .hero-line-inner {
+    display: block;
+    font-family: "Clash Display", serif;
+    font-weight: 700;
+    font-size: clamp(3.75rem, 16cqw, 8rem);
+    color: var(--blush);
+    line-height: 0.92;
+    letter-spacing: 0;
+  }
 
-/* ─── Location pill ── */
-.location-pill {
-  position: absolute;
-  bottom: -1rem;
-  left: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 1rem;
-  background: var(--navy);
-  border: 1.5px solid var(--blush);
-  border-radius: 9999px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--cream);
-  white-space: nowrap;
-  animation: float 4s ease-in-out infinite;
-}
+  @supports not (font-size: 1cqw) {
+    .hero-line-inner {
+      font-size: clamp(3.75rem, 7.6vw, 8.5rem);
+    }
+  }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
+  .hero-tagline {
+    font-family: "General Sans", sans-serif;
+    font-style: italic;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: var(--cream);
+    opacity: 0.7;
+    line-height: 1.7;
+    margin-bottom: 3.5rem;
+    max-width: 520px;
+  }
+
+  /* ─── Scroll indicator ── */
+  .scroll-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    bottom: 2.5rem;
+    left: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-indicator {
+      left: 2.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .scroll-indicator {
+      left: 4rem;
+    }
+  }
+
+  .scroll-line {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: rgba(245, 160, 192, 0.3);
+    overflow: hidden;
+  }
+
+  .scroll-line-highlight {
+    position: absolute;
+    inset: 0;
+    background: var(--blush);
+    animation: scan 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+
+  .scroll-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--cream);
+    opacity: 0.5;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ─── Image blob ── */
+  .hero-image-col {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-image-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .hero-blob-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .hero-blob {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    clip-path: url(#blob-clip);
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .hero-image-inner {
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+  }
+
+  .hero-placeholder {
+    background: linear-gradient(135deg, var(--ink), rgba(245, 160, 192, 0.15));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(245, 160, 192, 0.2);
+  }
+
+  .placeholder-label {
+    font-family: "Clash Display", serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--blush);
+    opacity: 0.3;
+    letter-spacing: 0.4em;
+  }
+
+  /* ─── Location pill ── */
+  .location-pill {
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: var(--navy);
+    border: 1.5px solid var(--blush);
+    border-radius: 9999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--cream);
+    white-space: nowrap;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
 </style>
