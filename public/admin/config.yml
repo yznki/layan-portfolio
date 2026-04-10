@@ -2,7 +2,7 @@ backend:
   name: github
   repo: yznki/layan-portfolio
   branch: master
-  base_url: https://your-oauth-proxy.example.com
+  base_url: https://layan-portfolio-oauth.yznkiswani.workers.dev
   auth_endpoint: auth
 
 media_folder: public/images/uploads
