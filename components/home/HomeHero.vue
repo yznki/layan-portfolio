@@ -186,26 +186,34 @@ onMounted(() => {
 }
 
 .hero-heading {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   margin: 0 0 1.75rem;
+  width: min(100%, 46rem);
 }
 
 .hero-line {
   overflow: hidden;
   display: block;
-  margin-inline: -0.08em;
-  padding-inline: 0.08em;
+  margin-inline: -1.25rem;
+  padding-inline: 1.25rem;
 }
 
 .hero-line-inner {
   display: block;
   font-family: 'Clash Display', serif;
   font-weight: 700;
-  font-size: clamp(4.5rem, 8.8vw, 9.75rem);
+  font-size: clamp(3.75rem, 16cqw, 8rem);
   color: var(--blush);
   line-height: 0.92;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
+}
+
+@supports not (font-size: 1cqw) {
+  .hero-line-inner {
+    font-size: clamp(3.75rem, 7.6vw, 8.5rem);
+  }
 }
 
 .hero-tagline {

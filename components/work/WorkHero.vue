@@ -77,7 +77,7 @@ const metaItems = computed(() => [
 
     <!-- Title overlapping image bottom -->
     <div class="hero-title-wrap">
-      <h1 ref="titleRef" class="hero-title" :style="{ color: `var(--cs-secondary)` }">
+      <h1 ref="titleRef" class="hero-title">
         <span
           v-for="item in titleChars"
           :key="item.key"
@@ -140,6 +140,7 @@ const metaItems = computed(() => [
 }
 
 .hero-title {
+  color: var(--cs-text);
   font-family: 'Clash Display', serif;
   font-weight: 700;
   font-size: clamp(2.25rem, 9vw, 12rem);
