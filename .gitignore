@@ -1,0 +1,28 @@
+# Nuxt
+.nuxt
+.output
+.data
+.env
+.cache
+dist
+
+# Node
+node_modules
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

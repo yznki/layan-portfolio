@@ -1,0 +1,239 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: L
+        - generic [ref=e7]: A
+        - generic [ref=e8]: "Y"
+        - generic [ref=e9]: A
+        - generic [ref=e10]: "N"
+      - paragraph [ref=e11]: Graphic Design · Branding · Content
+      - generic [ref=e12]: 0%
+    - generic [ref=e13]:
+      - banner:
+        - generic:
+          - link "Layan Altaher — Home":
+            - /url: /
+            - text: LA
+          - navigation "Main navigation":
+            - link "Work":
+              - /url: /#work
+            - link "About":
+              - /url: /about
+            - link "Reels":
+              - /url: /reels
+            - link "Contact":
+              - /url: mailto:Layan04ibrahim@gmail.com
+      - main [ref=e14]:
+        - generic [ref=e15]:
+          - region "Project hero" [ref=e16]:
+            - heading "K P M G" [level=1] [ref=e20]:
+              - generic [ref=e21]: K
+              - generic [ref=e22]: P
+              - generic [ref=e23]: M
+              - generic [ref=e24]: G
+            - generic [ref=e25]:
+              - generic [ref=e26]:
+                - generic [ref=e27]: Client
+                - generic [ref=e28]: KPMG Jordan
+                - generic [ref=e29]: ·
+              - generic [ref=e30]:
+                - generic [ref=e31]: Role
+                - generic [ref=e32]: Content Creator Intern
+                - generic [ref=e33]: ·
+              - generic [ref=e34]:
+                - generic [ref=e35]: Year
+                - generic [ref=e36]: "2024"
+                - generic [ref=e37]: ·
+              - generic [ref=e38]:
+                - generic [ref=e39]: Category
+                - generic [ref=e40]: Social Media Design
+          - region "Overview" [ref=e41]:
+            - generic [ref=e42]:
+              - generic [ref=e43]:
+                - heading "Overview" [level=2] [ref=e44]
+                - generic [ref=e47]:
+                  - paragraph [ref=e48]: During my internship at KPMG Jordan, I designed social media content and campaign visuals that aligned with the global KPMG brand while resonating with local audiences.
+                  - heading "The Challenge" [level=2] [ref=e49]:
+                    - link "The Challenge" [ref=e50] [cursor=pointer]:
+                      - /url: "#the-challenge"
+                  - paragraph [ref=e51]: KPMG Jordan needed consistent, professional social media content that balanced the firm's corporate identity with engaging, platform-native design.
+                  - heading "The Process" [level=2] [ref=e52]:
+                    - link "The Process" [ref=e53] [cursor=pointer]:
+                      - /url: "#the-process"
+                  - paragraph [ref=e54]: I worked within KPMG's established brand guidelines to create a range of post formats — infographics, event announcements, thought-leadership content, and campaign creatives — for LinkedIn and Instagram.
+              - generic [ref=e55]:
+                - generic [ref=e56]:
+                  - generic [ref=e57]:
+                    - generic [ref=e58]: Client
+                    - generic [ref=e59]: KPMG Jordan
+                  - generic [ref=e60]:
+                    - generic [ref=e61]: Role
+                    - generic [ref=e62]: Content Creator Intern
+                  - generic [ref=e63]:
+                    - generic [ref=e64]: Year
+                    - generic [ref=e65]: "2024"
+                  - generic [ref=e66]:
+                    - generic [ref=e67]: Category
+                    - generic [ref=e68]: Social Media Design
+                - generic [ref=e69]:
+                  - generic [ref=e70]: Tools
+                  - generic [ref=e71]:
+                    - generic [ref=e72]: Adobe Photoshop
+                    - generic [ref=e73]: Illustrator
+                    - generic [ref=e74]: Canva
+          - region "Project gallery" [ref=e75]:
+            - generic [ref=e76]:
+              - generic [ref=e79]: Image 1
+              - generic [ref=e82]: Image 2
+              - generic [ref=e85]: Image 3
+              - generic [ref=e88]: Image 4
+          - region "The Process" [ref=e89]:
+            - generic [ref=e90]:
+              - heading "The Process" [level=2] [ref=e91]
+              - generic [ref=e93]:
+                - paragraph [ref=e94]:
+                  - generic [ref=e95]: During
+                  - generic [ref=e96]: my
+                  - generic [ref=e97]: internship
+                  - generic [ref=e98]: at
+                  - generic [ref=e99]: KPMG
+                  - generic [ref=e100]: Jordan,
+                  - generic [ref=e101]: I
+                  - generic [ref=e102]: designed
+                  - generic [ref=e103]: social
+                  - generic [ref=e104]: media
+                  - generic [ref=e105]: content
+                  - generic [ref=e106]: and
+                  - generic [ref=e107]: campaign
+                  - generic [ref=e108]: visuals
+                  - generic [ref=e109]: that
+                  - generic [ref=e110]: aligned
+                  - generic [ref=e111]: with
+                  - generic [ref=e112]: the
+                  - generic [ref=e113]: global
+                  - generic [ref=e114]: KPMG
+                  - generic [ref=e115]: brand
+                  - generic [ref=e116]: while
+                  - generic [ref=e117]: resonating
+                  - generic [ref=e118]: with
+                  - generic [ref=e119]: local
+                  - generic [ref=e120]: audiences.
+                - heading "The Challenge" [level=2] [ref=e121]:
+                  - link "The Challenge" [ref=e122] [cursor=pointer]:
+                    - /url: "#the-challenge"
+                - paragraph [ref=e123]:
+                  - generic [ref=e124]: KPMG
+                  - generic [ref=e125]: Jordan
+                  - generic [ref=e126]: needed
+                  - generic [ref=e127]: consistent,
+                  - generic [ref=e128]: professional
+                  - generic [ref=e129]: social
+                  - generic [ref=e130]: media
+                  - generic [ref=e131]: content
+                  - generic [ref=e132]: that
+                  - generic [ref=e133]: balanced
+                  - generic [ref=e134]: the
+                  - generic [ref=e135]: firm's
+                  - generic [ref=e136]: corporate
+                  - generic [ref=e137]: identity
+                  - generic [ref=e138]: with
+                  - generic [ref=e139]: engaging,
+                  - generic [ref=e140]: platform-native
+                  - generic [ref=e141]: design.
+                - heading "The Process" [level=2] [ref=e142]:
+                  - link "The Process" [ref=e143] [cursor=pointer]:
+                    - /url: "#the-process"
+                - paragraph [ref=e144]:
+                  - generic [ref=e145]: I
+                  - generic [ref=e146]: worked
+                  - generic [ref=e147]: within
+                  - generic [ref=e148]: KPMG's
+                  - generic [ref=e149]: established
+                  - generic [ref=e150]: brand
+                  - generic [ref=e151]: guidelines
+                  - generic [ref=e152]: to
+                  - generic [ref=e153]: create
+                  - generic [ref=e154]: a
+                  - generic [ref=e155]: range
+                  - generic [ref=e156]: of
+                  - generic [ref=e157]: post
+                  - generic [ref=e158]: formats
+                  - generic [ref=e159]: —
+                  - generic [ref=e160]: infographics,
+                  - generic [ref=e161]: event
+                  - generic [ref=e162]: announcements,
+                  - generic [ref=e163]: thought-leadership
+                  - generic [ref=e164]: content,
+                  - generic [ref=e165]: and
+                  - generic [ref=e166]: campaign
+                  - generic [ref=e167]: creatives
+                  - generic [ref=e168]: —
+                  - generic [ref=e169]: for
+                  - generic [ref=e170]: LinkedIn
+                  - generic [ref=e171]: and
+                  - generic [ref=e172]: Instagram.
+          - region "Impact" [ref=e173]:
+            - generic [ref=e174]:
+              - heading "Impact" [level=2] [ref=e175]
+              - generic [ref=e176]:
+                - generic [ref=e177]:
+                  - generic [ref=e178]: 0+
+                  - paragraph [ref=e179]: Posts Designed
+                - generic [ref=e180]:
+                  - generic [ref=e181]: "0"
+                  - paragraph [ref=e182]: Campaigns
+          - region "Next project" [ref=e183]:
+            - link "NEXT PROJECT Kalmntina Kalmntina Content Creation" [ref=e184]:
+              - /url: /work/kalmntina
+              - generic [ref=e185]:
+                - paragraph [ref=e186]: NEXT PROJECT
+                - generic [ref=e187]:
+                  - heading "Kalmntina" [level=2] [ref=e188]
+                  - generic [ref=e190]: Kalmntina
+                - paragraph [ref=e191]: Content Creation
+                - generic [ref=e192]: →
+      - contentinfo [ref=e193]:
+        - generic [ref=e194]:
+          - generic "Let's work together" [ref=e195]:
+            - heading [level=2] [ref=e196]:
+              - generic [ref=e197]: L
+              - generic [ref=e198]: E
+              - generic [ref=e199]: T
+              - generic [ref=e200]: "'"
+              - generic [ref=e201]: S
+              - generic [ref=e203]: W
+              - generic [ref=e204]: O
+              - generic [ref=e205]: R
+              - generic [ref=e206]: K
+              - generic [ref=e208]: T
+              - generic [ref=e209]: O
+              - generic [ref=e210]: G
+              - generic [ref=e211]: E
+              - generic [ref=e212]: T
+              - generic [ref=e213]: H
+              - generic [ref=e214]: E
+              - generic [ref=e215]: R
+            - paragraph [ref=e216]: Let's work together
+          - generic [ref=e217]:
+            - link "Layan04ibrahim@gmail.com" [ref=e218] [cursor=pointer]:
+              - /url: mailto:Layan04ibrahim@gmail.com
+            - generic [ref=e219]: +962 — —
+          - generic [ref=e220]:
+            - link "Instagram" [ref=e221] [cursor=pointer]:
+              - /url: "#"
+            - link "LinkedIn" [ref=e223] [cursor=pointer]:
+              - /url: "#"
+            - link "Behance" [ref=e225] [cursor=pointer]:
+              - /url: "#"
+          - generic [ref=e227]: © 2026 Layan Altaher. All rights reserved.
+  - generic:
+    - img
+  - generic [ref=e228]:
+    - button "Toggle Nuxt DevTools" [ref=e229] [cursor=pointer]:
+      - img [ref=e230]
+    - generic "Page load time" [ref=e233]:
+      - generic [ref=e234]: "33"
+      - generic [ref=e235]: ms
+    - button "Toggle Component Inspector" [ref=e237] [cursor=pointer]:
+      - img [ref=e238]

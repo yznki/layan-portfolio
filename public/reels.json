@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Brand Identity Reel",
+    "thumbnail": "/images/reels/placeholder-1.jpg",
+    "url": "",
+    "duration": "0:45",
+    "description": "A look at the visual identity systems I've built — logos, color worlds, and brand guidelines."
+  },
+  {
+    "title": "TEDxJU 2025 Highlights",
+    "thumbnail": "/images/reels/placeholder-2.jpg",
+    "url": "",
+    "duration": "1:10",
+    "description": "Behind the design of TEDxJU 2025 — from the initial brief to final identity assets."
+  },
+  {
+    "title": "Social Media in Motion",
+    "thumbnail": "/images/reels/placeholder-3.jpg",
+    "url": "",
+    "duration": "0:30",
+    "description": "Motion graphics and animated posts from KPMG and Kalmntina campaigns."
+  },
+  {
+    "title": "Design Process",
+    "thumbnail": "/images/reels/placeholder-4.jpg",
+    "url": "",
+    "duration": "2:00",
+    "description": "How I approach brand projects — research, moodboards, iteration, and final delivery."
+  }
+]

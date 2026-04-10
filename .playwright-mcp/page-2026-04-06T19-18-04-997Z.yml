@@ -1,0 +1,37 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: SU
+      - generic [ref=e9]: ShowUp
+      - paragraph [ref=e10]: Stay accountable together.
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - button "Sign In" [ref=e13]
+        - link "Register" [ref=e14] [cursor=pointer]:
+          - /url: /register
+          - button "Register" [ref=e15]
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]: Email
+          - textbox "Email" [ref=e19]:
+            - /placeholder: you@example.com
+        - generic [ref=e20]:
+          - generic [ref=e21]: Password
+          - textbox "Password" [ref=e22]:
+            - /placeholder: ••••••••
+        - button "Sign In" [ref=e23]:
+          - generic [ref=e24]: Sign In
+        - paragraph [ref=e25]:
+          - text: New here?
+          - link "Create an account" [ref=e26] [cursor=pointer]:
+            - /url: /register
+  - generic:
+    - img
+  - generic [ref=e27]:
+    - button "Toggle Nuxt DevTools" [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+    - generic "Page load time" [ref=e32]:
+      - generic [ref=e33]: "11"
+      - generic [ref=e34]: ms
+    - button "Toggle Component Inspector" [ref=e36] [cursor=pointer]:
+      - img [ref=e37]

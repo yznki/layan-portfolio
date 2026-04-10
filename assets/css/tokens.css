@@ -1,0 +1,15 @@
+:root {
+  /* ─── Global palette ─────────────────────────────────────────── */
+  --navy:  #0F1B4C;
+  --blush: #F5A0C0;
+  --cream: #FFF5F0;
+  --ink:   #1A1A2E;
+
+  /* ─── Case-study theme vars (overridden per page) ────────────── */
+  --cs-primary:    var(--navy);
+  --cs-secondary:  var(--cream);
+  --cs-accent:     var(--blush);
+  --cs-bg:         var(--navy);
+  --cs-text:       var(--cream);
+  --cs-text-muted: rgba(255, 245, 240, 0.55);
+}

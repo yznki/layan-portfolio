@@ -1,0 +1,120 @@
+/* ─── Tailwind v4 ────────────────────────────────────────────────────────── */
+@import "tailwindcss";
+
+/* ─── Design tokens & fonts ──────────────────────────────────────────────── */
+@import "./tokens.css";
+@import "./fonts.css";
+
+/* ─── Custom theme (Tailwind v4 CSS-first config) ───────────────────────── */
+@theme {
+  /* Font families */
+  --font-display: 'Clash Display', serif;
+  --font-heading: 'Satoshi', sans-serif;
+  --font-body:    'General Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Brand colors as Tailwind utilities */
+  --color-navy:  #0F1B4C;
+  --color-blush: #F5A0C0;
+  --color-cream: #FFF5F0;
+  --color-ink:   #1A1A2E;
+}
+
+/* ─── Global resets ──────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--navy);
+  color: var(--cream);
+  font-family: 'General Sans', sans-serif;
+  cursor: none;             /* Custom cursor replaces native */
+  overflow-x: hidden;
+}
+
+/* Hide cursor on touch devices */
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ─── Custom scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--blush);
+  border-radius: 2px;
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--blush);
+  color: var(--navy);
+}
+
+/* ─── Grain texture utility ──────────────────────────────────────────────── */
+/* SVG noise filter overlay — applied via class="grain" on section wrappers */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  z-index: 1;
+}
+.grain {
+  position: relative;
+}
+
+/* ─── Overflow-hidden clip trick for text reveal animations ─────────────── */
+.overflow-clip {
+  overflow: hidden;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+/* When the user prefers reduced motion, show everything immediately          */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ─── Keyboard focus rings ───────────────────────────────────────────────── */
+/* Visible focus ring for keyboard users; hidden for mouse users via :focus-visible */
+:focus-visible {
+  outline: 2px solid var(--blush);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

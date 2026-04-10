@@ -1,0 +1,173 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: L
+        - generic [ref=e7]: A
+        - generic [ref=e8]: "Y"
+        - generic [ref=e9]: A
+        - generic [ref=e10]: "N"
+      - paragraph [ref=e11]: Graphic Design · Branding · Content
+      - generic [ref=e12]: 0%
+    - generic [ref=e13]:
+      - banner:
+        - generic:
+          - link "Layan Altaher — Home":
+            - /url: /
+            - text: LA
+          - navigation "Main navigation":
+            - link "Work":
+              - /url: /#work
+            - link "About":
+              - /url: /about
+            - link "Reels":
+              - /url: /reels
+            - link "Contact":
+              - /url: mailto:Layan04ibrahim@gmail.com
+      - main [ref=e14]:
+        - generic [ref=e15]:
+          - region "Hero" [ref=e16]:
+            - generic [ref=e17]:
+              - generic [ref=e18]:
+                - paragraph [ref=e19]: — Portfolio 2025
+                - heading "Creative Designer" [level=1] [ref=e20]:
+                  - generic [ref=e22]: CREATIVE
+                  - generic [ref=e24]: DESIGNER
+                - paragraph [ref=e25]:
+                  - text: Turning brands into experiences — through design,
+                  - text: storytelling, and visual identity.
+                - generic [ref=e29]: SCROLL
+              - generic [ref=e31]:
+                - img
+                - generic [ref=e34]: LAYAN
+                - generic [ref=e35]:
+                  - generic [ref=e36]: 📍
+                  - text: Based in Amman, Jordan
+          - generic [ref=e39]:
+            - generic [ref=e40]: GRAPHIC DESIGN ·
+            - generic [ref=e41]: BRANDING ·
+            - generic [ref=e42]: CONTENT CREATION ·
+            - generic [ref=e43]: SOCIAL MEDIA ·
+            - generic [ref=e44]: LOGO DESIGN ·
+            - generic [ref=e45]: VISUAL IDENTITY ·
+            - generic [ref=e46]: GRAPHIC DESIGN ·
+            - generic [ref=e47]: BRANDING ·
+            - generic [ref=e48]: CONTENT CREATION ·
+            - generic [ref=e49]: SOCIAL MEDIA ·
+            - generic [ref=e50]: LOGO DESIGN ·
+            - generic [ref=e51]: VISUAL IDENTITY ·
+          - region "SELECTED WORK" [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]:
+                - paragraph [ref=e55]: — Selected Work
+                - heading "SELECTED WORK" [level=2] [ref=e56]
+              - generic [ref=e57]:
+                - generic [ref=e58]:
+                  - link "View TEDxJU 2025 case study" [ref=e59]:
+                    - /url: /work/tedxju-2025
+                    - generic [ref=e60]:
+                      - generic [ref=e63]: TEDxJU 2025
+                      - generic [ref=e64]:
+                        - generic [ref=e65]: TEDxJU 2025
+                        - generic [ref=e66]: Brand Identity
+                  - link "View Kalmntina case study" [ref=e67]:
+                    - /url: /work/kalmntina
+                    - generic [ref=e68]:
+                      - generic [ref=e71]: Kalmntina
+                      - generic [ref=e72]:
+                        - generic [ref=e73]: Kalmntina
+                        - generic [ref=e74]: Content Creation
+                - link "View KPMG case study" [ref=e76]:
+                  - /url: /work/kpmg
+                  - generic [ref=e77]:
+                    - generic [ref=e80]: KPMG
+                    - generic [ref=e81]:
+                      - generic [ref=e82]: KPMG
+                      - generic [ref=e83]: Social Media Design
+          - region "GET TO KNOW ME" [ref=e84]:
+            - generic [ref=e85]:
+              - generic [ref=e86]:
+                - paragraph [ref=e87]: — About Me
+                - heading "GET TO KNOW ME" [level=2] [ref=e88]:
+                  - generic "GET TO KNOW ME" [ref=e89]:
+                    - generic [ref=e90]: GET TO KNOW ME
+                - paragraph [ref=e91]: I'm Layan — a marketing student at the University of Jordan with a passion for turning ideas into bold visual identities. I work across graphic design, branding, and content creation.
+                - link "More about me →" [ref=e92]:
+                  - /url: /about
+              - generic [ref=e96]:
+                - text: PHOTO
+                - text: COMING
+                - text: SOON
+          - region "WHAT I DO" [ref=e100]:
+            - generic [ref=e101]:
+              - paragraph [ref=e102]: — What I Do
+              - heading "WHAT I DO" [level=2] [ref=e103]
+            - generic [ref=e104]:
+              - article [ref=e105]:
+                - generic [ref=e106]: ✦
+                - heading "Graphic Design" [level=3] [ref=e107]:
+                  - generic "Graphic Design" [ref=e108]:
+                    - generic [ref=e109]: Graphic Design
+                - paragraph [ref=e110]: From posters to print — crafting visuals that communicate with purpose and precision.
+              - article [ref=e111]:
+                - generic [ref=e112]: ◈
+                - heading "Brand Identity" [level=3] [ref=e113]:
+                  - generic "Brand Identity" [ref=e114]:
+                    - generic [ref=e115]: Brand Identity
+                - paragraph [ref=e116]: Logos, color systems, and guidelines that build a cohesive brand world from the ground up.
+              - article [ref=e117]:
+                - generic [ref=e118]: ⊹
+                - heading "Content Creation" [level=3] [ref=e119]:
+                  - generic "Content Creation" [ref=e120]:
+                    - generic [ref=e121]: Content Creation
+                - paragraph [ref=e122]: Scroll-stopping content tailored to each platform — visually consistent and strategically driven.
+              - article [ref=e123]:
+                - generic [ref=e124]: ◉
+                - heading "Social Media" [level=3] [ref=e125]:
+                  - generic "Social Media" [ref=e126]:
+                    - generic [ref=e127]: Social Media
+                - paragraph [ref=e128]: Feed planning, templates, and campaign design that build a brand's online presence.
+      - contentinfo [ref=e129]:
+        - generic [ref=e130]:
+          - generic "Let's work together" [ref=e131]:
+            - heading [level=2] [ref=e132]:
+              - generic [ref=e133]: L
+              - generic [ref=e134]: E
+              - generic [ref=e135]: T
+              - generic [ref=e136]: "'"
+              - generic [ref=e137]: S
+              - generic [ref=e139]: W
+              - generic [ref=e140]: O
+              - generic [ref=e141]: R
+              - generic [ref=e142]: K
+              - generic [ref=e144]: T
+              - generic [ref=e145]: O
+              - generic [ref=e146]: G
+              - generic [ref=e147]: E
+              - generic [ref=e148]: T
+              - generic [ref=e149]: H
+              - generic [ref=e150]: E
+              - generic [ref=e151]: R
+            - paragraph [ref=e152]: Let's work together
+          - generic [ref=e153]:
+            - link "Layan04ibrahim@gmail.com" [ref=e154] [cursor=pointer]:
+              - /url: mailto:Layan04ibrahim@gmail.com
+            - generic [ref=e155]: +962 — —
+          - generic [ref=e156]:
+            - link "Instagram" [ref=e157] [cursor=pointer]:
+              - /url: "#"
+            - link "LinkedIn" [ref=e159] [cursor=pointer]:
+              - /url: "#"
+            - link "Behance" [ref=e161] [cursor=pointer]:
+              - /url: "#"
+          - generic [ref=e163]: © 2026 Layan Altaher. All rights reserved.
+  - generic:
+    - img
+  - generic [ref=e164]:
+    - button "Toggle Nuxt DevTools" [ref=e165] [cursor=pointer]:
+      - img [ref=e166]
+    - generic "Page load time" [ref=e169]:
+      - generic [ref=e170]: "27"
+      - generic [ref=e171]: ms
+    - button "Toggle Component Inspector" [ref=e173] [cursor=pointer]:
+      - img [ref=e174]
